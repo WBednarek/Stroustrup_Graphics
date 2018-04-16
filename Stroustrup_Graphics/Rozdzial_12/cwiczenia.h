@@ -3,7 +3,7 @@
 
 namespace Ex12
 {
-	void cwiczenia();
+	int cwiczenia();
 
 
 		class cwiczenia
