@@ -1,6 +1,7 @@
 # Stroustrup_Graphics
 
 FLTK installation with Visual Studio 2015
+
 Other useful tutorials:
 http://courses.cs.tamu.edu/daugher/cpsc121/10fall/Documentation/fltk06c.html, last access 13.04.2018
 http://www.c-jump.com/bcc/common/Talk2/Cxx/FltkInstallVC/FltkInstallVC.html, last access 13.04.2018
