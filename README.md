@@ -1,10 +1,14 @@
 # Stroustrup_Graphics
 
 FLTK installation with Visual Studio 2015
+Other useful tutorials:
+http://courses.cs.tamu.edu/daugher/cpsc121/10fall/Documentation/fltk06c.html, last access 13.04.2018
+http://www.c-jump.com/bcc/common/Talk2/Cxx/FltkInstallVC/FltkInstallVC.html, last access 13.04.2018
 
 !!! I was using here fltk-1.1.10 version (fltk-1.1.10-source.zip).
+Do Everything as described in Stroustrup Programming: Principles and Practice Using (PPP) book, Dodatek D or above mentioned tutorials. 
 
-Do Everything as described in Stroustrup Programming: Principles and Practice Using (PPP) book, Dodatek D. But there are couple things that need to be mentioned.
+If you were following the book instructions there are couple things that need to be mentioned.
 
 1.	fltk.dsw file is in visualc folder, not in the vc2005 or vnet as it was described in Stroustrup PPP dodatek D. 
 But you may use fltk.sln from vc2005 file as well (not tested). 
