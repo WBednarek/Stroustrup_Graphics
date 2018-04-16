@@ -90,6 +90,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <BrowseInformation>true</BrowseInformation>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -97,6 +98,9 @@
       <AdditionalDependencies>fltkd.lib;wsock32.lib;comctl32.lib;fltkjpegd.lib;fltkimagesd.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <IgnoreSpecificDefaultLibraries>libcd.lib</IgnoreSpecificDefaultLibraries>
     </Link>
+    <Bscmake>
+      <PreserveSbr>true</PreserveSbr>
+    </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -158,7 +162,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Rozdzial_12\cwiczenia.cpp" />
+    <ClCompile Include="Graph.cpp" />
+    <ClCompile Include="GUI.cpp" />
+    <ClCompile Include="mian.cpp" />
+    <ClCompile Include="Simple_window.cpp" />
+    <ClCompile Include="Window.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Rozdzial_12\cwiczenia.h" />
+    <ClInclude Include="Graph.h" />
+    <ClInclude Include="GUI.h" />
+    <ClInclude Include="Point.h" />
+    <ClInclude Include="Simple_window.h" />
+    <ClInclude Include="std_lib_facilities.h" />
+    <ClInclude Include="Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
