@@ -8,9 +8,10 @@
 
 //------------------------------------------------------------------------------
 
-
 namespace Ex12
 {
+
+
 
 	int cwiczenia()
 	{
@@ -36,12 +37,12 @@ namespace Ex12
 		//poly.set_color(Color::red);  // adjust properties of poly
 		//win.attach(poly);           // connect poly to the window
 		//win.wait_for_button();       // give control to the display engine
-		
+
 
 		//Exercise 2
 
 
-		
+
 		////12.7.2
 		//try
 		//{
@@ -63,9 +64,9 @@ namespace Ex12
 		//}
 
 		//return 0;
-	
 
-	
+
+
 	//12.7.3-1
 	//try
 	//{
@@ -95,10 +96,10 @@ namespace Ex12
 	//	// some more error reporting
 	//	return 2;
 	//}
-	
 
 
-	
+
+
 	//12.7.3-2
 	//try
 	//{
@@ -134,10 +135,10 @@ namespace Ex12
 	//	return 2;
 	//}
 
-	
 
 
-	
+
+
 	//12.7.4
 	//try
 	//{
@@ -915,31 +916,22 @@ return 2;
 
 
 
-return 0;
+		return 0;
 
 
 
 	}
-
-
-
-
-
-
-
 
 	cwiczenia::cwiczenia()
 	{
 	}
 
-
 	cwiczenia::~cwiczenia()
 	{
 	}
 
+	
+
 
 }
 
-
-
-//------------------------------------------------------------------------------

@@ -33,6 +33,9 @@
     <ClCompile Include="Rozdzial_12\cwiczenia.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Rozdzial_13\cwiczenia_13.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Graph.h">
@@ -54,6 +57,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Rozdzial_12\cwiczenia.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Rozdzial_13\cwiczenia_13.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
