@@ -51,7 +51,9 @@ void Shape::draw() const
     // there is no good portable way of retrieving the current style
     fl_color(lcolor.as_int());            // set color
     fl_line_style(ls.style(),ls.width()); // set style
-    draw_lines();
+
+	
+	draw_lines();
     fl_color(oldc);      // reset color (to previous)
     fl_line_style(0);    // reset line style to default
 }

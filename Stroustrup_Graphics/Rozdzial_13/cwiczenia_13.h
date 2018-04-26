@@ -4,6 +4,6 @@
 namespace Ex13
 {
 	int cwiczenia();
-	void squares();
+	void squares(Simple_window& win);
 
 }
