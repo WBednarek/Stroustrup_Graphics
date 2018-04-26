@@ -66,4 +66,9 @@
   <ItemGroup>
     <Text Include="formulka commit.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="200x200.gif">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
 </Project>
