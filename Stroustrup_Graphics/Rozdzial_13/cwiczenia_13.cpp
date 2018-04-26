@@ -29,10 +29,11 @@ namespace Ex13
 		{
 			for (int j = 0; j < 8; ++j)
 			{
-				vecs.push_back(new Rectangle(Point(j*square_size, i*square_size), Point((j*square_size) + square_size, (i*square_size) + square_size)));
+				vecs.push_back(new Rectangle(Point(j*square_size, i*square_size), Point((j*square_size) + square_size, (i*square_size) + square_size)));		
 				win.attach(vecs[vecs.size() -1]);
 				
 			}
+			vecs[i*8+i].set_fill_color(Color(Color::red));
 		}
 
 		win.wait_for_button();
