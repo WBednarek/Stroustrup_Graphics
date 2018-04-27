@@ -70,5 +70,8 @@
     <Image Include="200x200.gif">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="fallout.gif">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

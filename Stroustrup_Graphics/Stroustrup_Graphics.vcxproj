@@ -185,6 +185,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="200x200.gif" />
+    <Image Include="fallout.gif" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
