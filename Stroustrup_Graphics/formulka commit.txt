@@ -1,1 +1,5 @@
 Stroustrup Programming: Principles and Practice Using (PPP) Chapter 13 Exercise 1 done.
+
+or
+
+Stroustrup PPP Chapter 13 Exercise 1 done.

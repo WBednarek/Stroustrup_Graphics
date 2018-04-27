@@ -36,7 +36,7 @@ namespace Ex13
 				
 			}
 			//Exercise 3
-			vecs[i*grid_size+i].set_fill_color(Color(Color::red));
+			vecs[i*grid_size+i].set_fill_color(Color::red);
 		}
 
 		//Exercise 4 - better solution
@@ -66,7 +66,7 @@ namespace Ex13
 		{
 			win.attach(*new Image(Point(0, 0), "fallout.gif"));
 			win.attach(vecs[vecs.size()-1]);
-			vecs[vecs.size() -1].set_fill_color(Color(Color::red));
+			vecs[vecs.size() -1].set_fill_color(Color::red);
 			
 			int counter = 1;
 			for (int i = 0; i < grid_size; ++i)
@@ -78,7 +78,7 @@ namespace Ex13
 					if (counter > 1)
 					{
 						win.attach(vecs[counter-2]);
-						vecs[counter-2].set_fill_color(Color(Color::red));
+						vecs[counter - 2].set_fill_color(Color::red);
 						
 					}
 					++counter;
