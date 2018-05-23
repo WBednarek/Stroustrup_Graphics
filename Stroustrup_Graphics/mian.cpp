@@ -7,19 +7,23 @@
 #include "Graph.h"            // get access to our graphics library facilities
 #include "Rozdzial_12\cwiczenia.h"
 #include "Rozdzial_13\cwiczenia_13.h"
+#include "Rozdzial_14\cwiczenia_14.h"
 
 int main()
 {
+	system("chcp1250");
 	
-	Ex13::cwiczenia();
+	Ex14::cwiczenia();
+	
 
 	/*
+	Ex13::cwiczenia();
 	Ex12::cwiczenia();
 	
 	
 	*/
 	
-	
+	system("pause");
 
 	return 0;
 }

@@ -36,6 +36,12 @@
     <ClCompile Include="Rozdzial_13\cwiczenia_13.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Rozdzial_14\cwiczenia_14.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Rozdzial_14\B1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Graph.h">
@@ -60,6 +66,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Rozdzial_13\cwiczenia_13.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Rozdzial_14\cwiczenia_14.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Rozdzial_14\B1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,13 +1,4 @@
-
-// "Programming -- Principles and Practice Using C++" by Bjarne Stroustrup
-//
-
-#include "../Simple_window.h"    // get access to our window library
-#include "../Graph.h"            // get access to our graphics library facilities
 #include "cwiczenia_13.h"
-
-//------------------------------------------------------------------------------
-
 
 using namespace Graph_lib;
 

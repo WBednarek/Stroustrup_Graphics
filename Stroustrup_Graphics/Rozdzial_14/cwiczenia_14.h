@@ -5,10 +5,10 @@
 
 #include "../Simple_window.h"    // get access to our window library
 #include "../Graph.h"            // get access to our graphics library facilities
+#include "B1.h"
 
-namespace Ex13
+
+namespace Ex14
 {
-	int cwiczenia();
-	void squares(Simple_window& win);
-
+	void cwiczenia();
 }

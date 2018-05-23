@@ -162,20 +162,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Rozdzial_14\B1.cpp" />
     <ClCompile Include="Rozdzial_12\cwiczenia.cpp" />
     <ClCompile Include="Graph.cpp" />
     <ClCompile Include="GUI.cpp" />
     <ClCompile Include="mian.cpp" />
     <ClCompile Include="Rozdzial_13\cwiczenia_13.cpp" />
+    <ClCompile Include="Rozdzial_14\cwiczenia_14.cpp" />
     <ClCompile Include="Simple_window.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Rozdzial_14\B1.h" />
     <ClInclude Include="Rozdzial_12\cwiczenia.h" />
     <ClInclude Include="Graph.h" />
     <ClInclude Include="GUI.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="Rozdzial_13\cwiczenia_13.h" />
+    <ClInclude Include="Rozdzial_14\cwiczenia_14.h" />
     <ClInclude Include="Simple_window.h" />
     <ClInclude Include="std_lib_facilities.h" />
     <ClInclude Include="Window.h" />
