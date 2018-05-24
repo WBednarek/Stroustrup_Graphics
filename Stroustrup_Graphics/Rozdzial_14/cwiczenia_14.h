@@ -7,6 +7,7 @@
 #include "../Graph.h"            // get access to our graphics library facilities
 #include "B1.h"
 #include "D1.h"
+#include "D2.h"
 
 
 namespace Ex14

@@ -10,8 +10,9 @@ namespace Ex14
 	public:
 		B1();
 		~B1();
-	virtual void vf();
-	void f();
+	virtual void vf() const;
+	void f() const;
+	virtual void pvf() const = 0; //Exercise 5. One virtual function creates abstract class - you can't create an object of that class.
 
 	};
 

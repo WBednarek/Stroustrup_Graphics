@@ -8,11 +8,12 @@
 
 namespace Ex14
 {
-	class D1 : B1 // Okay
+	class D1 : public B1 // Okay
 	{
 	public:
-		void vf();
-		void f();
+		void vf() const;
+		void f() const;
+		void pvf() const;
 	};
 
 }

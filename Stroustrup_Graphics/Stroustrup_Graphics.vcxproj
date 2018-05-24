@@ -162,6 +162,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Rozdzial_14\D2.cpp" />
     <ClCompile Include="Rozdzial_14\B1.cpp" />
     <ClCompile Include="Rozdzial_12\cwiczenia.cpp" />
     <ClCompile Include="Graph.cpp" />
@@ -174,6 +175,7 @@
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Rozdzial_14\D2.h" />
     <ClInclude Include="Rozdzial_14\B1.h" />
     <ClInclude Include="Rozdzial_12\cwiczenia.h" />
     <ClInclude Include="Graph.h" />

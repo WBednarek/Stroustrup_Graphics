@@ -2,15 +2,23 @@
 
 namespace Ex14
 {
-	void D1::vf()
+	void D1::vf() const
 	{
 		cout << "D1::vf()" << endl;
 	}
 
-	void D1::f()
+	void D1::f() const
 	{
 		cout << "D1::f()" << endl;
 	}
+
+	
+
+	void D1::pvf() const
+	{
+		cout << "D1::pvf()" << endl;
+	}
+
 }
 
 
