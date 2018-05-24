@@ -42,6 +42,9 @@
     <ClCompile Include="Rozdzial_14\B1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Rozdzial_14\D1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Graph.h">
@@ -72,6 +75,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Rozdzial_14\B1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Rozdzial_14\D1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
