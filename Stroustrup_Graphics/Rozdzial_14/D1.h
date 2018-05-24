@@ -8,7 +8,7 @@
 
 namespace Ex14
 {
-	class D1 : B1 // Error can't see the B1 class. No namespace Ex14 on the D1 class.
+	class D1 : B1 // Okay
 	{
 	public:
 		void vf();
