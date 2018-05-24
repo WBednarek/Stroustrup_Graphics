@@ -1,27 +1,25 @@
-#include "D1.h"
+#include "D1.h"1
 
-// Error can't see the B1 class. No namespace Ex14 on the D1 class.
-void D1::vf()
+namespace Ex14
 {
+	void D1::vf()
+	{
+	}
+
+	void D1::f()
+	{
+	}
 }
 
-void D1::f()
-{
-}
 
 
-
-//
-//namespace Ex14
+//Alternate solution
+//void Ex14::D1::vf()
 //{
-//	void D1::vf()
-//	{
-//	}
-//
-//	void D1::f()
-//	{
-//	}
 //}
-
+//
+//void Ex14::D1::f()
+//{
+//}
 
 
