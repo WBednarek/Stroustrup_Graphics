@@ -8,11 +8,14 @@
 #include "B1.h"
 #include "D1.h"
 #include "D2.h"
+#include "B2.h"
+#include "D21.h"
+#include "D22.h"
 
 
 namespace Ex14
 {
-	void Ex1();
-	void Ex2();
+
 	void cwiczenia();
+	void Ex7(B2& B2_ref);
 }

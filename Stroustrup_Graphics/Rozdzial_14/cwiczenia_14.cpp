@@ -7,17 +7,11 @@ using namespace Graph_lib;
 namespace Ex14
 {
 
-	
-	void Ex1()
+	void Ex7(B2& B2_ref)
 	{
-		
-	}
+		B2_ref.pvf();
 
-	void Ex2()
-	{
-		
 	}
-	
 
 
 
@@ -70,6 +64,16 @@ namespace Ex14
 		D2_obj.vf();
 		D2_obj.f();
 		D2_obj.pvf();
+
+		//Exercise 7
+		D21 D21_obj;
+		D22 D22_obj;
+
+		Ex7(D21_obj);
+		Ex7(D22_obj);
+
+
+		
 	}
 
 
