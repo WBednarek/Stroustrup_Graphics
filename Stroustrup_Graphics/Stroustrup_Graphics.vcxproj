@@ -162,6 +162,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Chapter_15\exercises_15.cpp" />
     <ClCompile Include="Rozdzial_14\D22.cpp" />
     <ClCompile Include="Rozdzial_14\D21.cpp" />
     <ClCompile Include="Rozdzial_14\B2.cpp" />
@@ -170,7 +171,7 @@
     <ClCompile Include="Rozdzial_12\cwiczenia.cpp" />
     <ClCompile Include="Graph.cpp" />
     <ClCompile Include="GUI.cpp" />
-    <ClCompile Include="mian.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="Rozdzial_13\cwiczenia_13.cpp" />
     <ClCompile Include="Rozdzial_14\cwiczenia_14.cpp" />
     <ClCompile Include="Rozdzial_14\D1.cpp" />
@@ -178,6 +179,7 @@
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Chapter_15\exercises_15.h" />
     <ClInclude Include="Rozdzial_14\D22.h" />
     <ClInclude Include="Rozdzial_14\D21.h" />
     <ClInclude Include="Rozdzial_14\B2.h" />
