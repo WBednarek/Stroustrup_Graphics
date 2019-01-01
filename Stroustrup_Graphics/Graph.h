@@ -179,6 +179,8 @@ struct Function : Shape {
     // the function parameters are not stored
     Function(Fct f, double r1, double r2, Point orig,
         int count = 100, double xscale = 25, double yscale = 25);    
+
+
 };
 
 //------------------------------------------------------------------------------
