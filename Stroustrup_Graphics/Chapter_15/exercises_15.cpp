@@ -30,22 +30,28 @@ namespace Ex15
 
 	double one1(double x) { return 1.0; }
 
+	double slope(double x)
+	{
+		return x / 2;
+	}
+	
+
 	int exercises()
 	{
 		Point t1(100, 100);
 		Simple_window win(t1, xmax, ymax, "Wykresy funkcji");
 
-		Fct sw;
-
-		// Function s(one1, base, end, Point(hafl_xmax,hafl_ymax), xlenght); // Exercise 1
+		//Function s(one1, base, end, Point(hafl_xmax,hafl_ymax), xlenght); // Exercise 1
 		
 		
-		Function s(one1, base, end, Point(hafl_xmax,hafl_ymax), xlenght, xscale, yscale); // Exercise 2
+		Function s1(one1, base, end, Point(hafl_xmax,hafl_ymax), xlenght, xscale, yscale); // Exercise 2
 	
+		Function Fslope(slope, base, end, Point(hafl_xmax, hafl_ymax), xlenght, xscale, yscale); // Exercise 4
+
 
 		Axis x(Axis::x, Point(xlenght/4, hafl_ymax), xlenght, (end-base), "1 == 20 pixels");
 		Axis y(Axis::y, Point(hafl_xmax, hafl_ymax), ylenght, (end-base), "1 == 20 pixels");
-
+		Text slope_description(Point(xoffset, hafl_ymax-slope(base)*yscale-20), "x/2");
 	
 
 		x.set_color(Color::red);
@@ -53,9 +59,12 @@ namespace Ex15
 
 		win.attach(x);
 		win.attach(y);
-		win.attach(s);
+		//win.attach(s); // Exercise 1
+		win.attach(s1);
+		win.attach(Fslope);
+		win.attach(slope_description);
 		win.wait_for_button();
-
+		
 
 		return 0;
 	}
