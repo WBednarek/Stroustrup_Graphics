@@ -1,5 +1,30 @@
 # Stroustrup_Graphics
 
+FLTK for already cloned code Visual Studio 2019 Community
+(for description with images see the Word document)
+
+1.	Log in to you github on VS2019. Clone the project, be careful clone the whole project that includes (Chapter12, Stroustrup_Graphics, and other files).
+2.	Clone repository and open. If you cant see files of your project go to Widok -> Ekplorator rozwiazan
+3.	Unzip fltk-1.1.10-source.zip
+4.	Run fltk-1.1.10 ->visualc ->fltk.dsw. Important wait until it ends and then build a project that was open by fltk.dsw. Without building the project you won’t get needed files to FLTK folder. Do not worry about errors after the build.
+5.	Close Visual studio
+6.	Here is the change from VS 2015! Copy all files from fltk-1.1.10\lib folder apart from README.lib to C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\VS\lib\x64
+And 
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\VS\lib\x86
+7.	Copy FL folder to C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\VS\include
+8.	Open Visual Studio and make sure you see files from Stroustrup_Graphics.sln view. To be sure double click on this file in VS. Or in explorator panel on the top click Przełacz widoki -> Stroustrup_Graphics.sln
+ 
+9.	Right-click on the project name (the second from the bottom on list, Stroustrup_Graphics) then Properties (Właściwości) -> Linker (Konsolidator) ->Input (dane wejściowe) and pate the following at the beginning with colons
+ 
+fltkd.lib;wsock32.lib;comctl32.lib;fltkjpegd.lib;fltkimagesd.lib;
+10.	In a field ignore specific library (Ignoruj określone biblioteki domyślne) make sure there is libcd.lib
+11.	In Properties -> C/C++->Code generation (generowanie kodu) -> Runtime library (Biblioteka środowiska uruchomieniowego) make sure there is Multi-threaded Debug DLL (/MDd) (Wielowątkowe debugowanie biblioteki DLL (/MDd) )
+12.	Now it should work
+
+
+
+
+
 FLTK installation with Visual Studio 2015
 
 Other useful tutorials:
