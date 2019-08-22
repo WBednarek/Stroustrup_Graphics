@@ -15,10 +15,14 @@ C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\VS\li
 8.	Open Visual Studio and make sure you see files from Stroustrup_Graphics.sln view. To be sure double click on this file in VS. Or in explorator panel on the top click Przełacz widoki -> Stroustrup_Graphics.sln
  
 9.	Right-click on the project name (the second from the bottom on list, Stroustrup_Graphics) then Properties (Właściwości) -> Linker (Konsolidator) ->Input (dane wejściowe) and pate the following at the beginning with colons
- 
+
 fltkd.lib;wsock32.lib;comctl32.lib;fltkjpegd.lib;fltkimagesd.lib;
+
+
 10.	In a field ignore specific library (Ignoruj określone biblioteki domyślne) make sure there is libcd.lib
+
 11.	In Properties -> C/C++->Code generation (generowanie kodu) -> Runtime library (Biblioteka środowiska uruchomieniowego) make sure there is Multi-threaded Debug DLL (/MDd) (Wielowątkowe debugowanie biblioteki DLL (/MDd) )
+
 12.	Now it should work
 
 
