@@ -7,6 +7,5 @@ namespace Ex15
 {
 
 	int exercises();
-	double one1(double x);
-	double slope(double x);
+	
 }
