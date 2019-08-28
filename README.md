@@ -23,7 +23,13 @@ fltkd.lib;wsock32.lib;comctl32.lib;fltkjpegd.lib;fltkimagesd.lib;
 
 11.	In Properties -> C/C++->Code generation (generowanie kodu) -> Runtime library (Biblioteka środowiska uruchomieniowego) make sure there is Multi-threaded Debug DLL (/MDd) (Wielowątkowe debugowanie biblioteki DLL (/MDd) )
 
-12.	Now it should work
+
+12.	Run using x86 Debug mode (depends on your Visual Studio most likely)
+
+13.	Now it should work
+
+
+
 
 
 
