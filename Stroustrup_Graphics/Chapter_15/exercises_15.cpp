@@ -6,6 +6,7 @@ using namespace Graph_lib;
 namespace Ex15
 {
 
+	//Exercises 1-5
 	const int xmax = 600;
 	const int ymax = 600;
 
@@ -24,6 +25,8 @@ namespace Ex15
 
 		Axis x(Axis::x, Point(xoffset, xmax/2), xlength, 20, "1 == 20 pikseli"); // In Point() xoffset shows where the x segment (axix) starts from the left side of a window, the second parameter shows how "high" the asix should be placed - here is 300 pixels
 		Axis y(Axis::y, Point(ymax/2, ymax - yoffset), ylength, 20, "1 == 20 pikseli"); // In Point() the second parameter is where y asix ends, we counting from the top of the window
+		x.set_color(Color::red);
+		y.set_color(Color::red);
 		
 		win.attach(x);
 		win.attach(y);
