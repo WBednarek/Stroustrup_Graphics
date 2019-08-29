@@ -25,11 +25,28 @@ namespace Ex15
 	const int r_min = -10;
 	const int r_max = 11;
 
+	const int scaled_length = abs(r_min - r_max) - 1; // length of 20 on axis which is eqivalent of 400 pixels (I think...)
+
 	const Point orig(xmax / 2, ymax / 2);
 
 	double ones(double )
 	{
 		return 1;
+	}
+
+	double slope(double x)
+	{
+		return x / 2;
+	}
+
+	double square(double x)
+	{
+		return x * x;
+	}
+
+	double sloping_cos(double x)
+	{
+		return cos(x) + slope(x);
 	}
 
 	int exercises()
@@ -41,11 +58,23 @@ namespace Ex15
 		x.set_color(Color::red);
 		y.set_color(Color::red);
 		
-		Function one(ones, r_min, r_max, orig, 400);
+		Function one(ones, r_min, r_max, orig, 400, xscale, yscale); // count argument is for 
+		Function slope_graph(slope, r_min, r_max, orig, 400, xscale, yscale);
+		Text slope_label(Point(xmax - xoffset, slope(xlength) + 20), "x/2"); // +20 pixels below end of line of x/2 slope
+		Function square_graph(square, r_min, r_max, orig, 400, xscale,yscale); 
+		Function cos_graph(cos, r_min, r_max, orig, 400, xscale, yscale);
+		cos_graph.set_color(Color::blue); // exrcise 8 from the second set
+		Function sloping_sos_graph(sloping_cos, r_min, r_max, orig, 400, xscale, yscale); // exrcise 9 from the second set
+
 
 		win.attach(x);
 		win.attach(y);
 		win.attach(one);
+		win.attach(slope_graph);
+		win.attach(slope_label);
+		win.attach(square_graph);
+		win.attach(cos_graph);
+		win.attach(sloping_sos_graph);
 		win.wait_for_button();
 
 		return 0;

@@ -8,4 +8,7 @@ namespace Ex15
 
 	int exercises();
 	double ones(double);
+	double slope(double x);
+	double square(double x);
+	double sloping_cos(double x);
 }
