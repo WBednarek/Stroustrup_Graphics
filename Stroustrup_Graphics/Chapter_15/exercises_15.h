@@ -7,5 +7,5 @@ namespace Ex15
 {
 
 	int exercises();
-	
+	double ones(double);
 }

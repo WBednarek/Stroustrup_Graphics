@@ -19,6 +19,19 @@ namespace Ex15
 	const int xlength = xmax - xoffset - xspace;
 	const int ylength = ymax - yoffset - yspace;
 
+	const int xscale = 20;
+	const int yscale = 20;
+
+	const int r_min = -10;
+	const int r_max = 11;
+
+	const Point orig(xmax / 2, ymax / 2);
+
+	double ones(double )
+	{
+		return 1;
+	}
+
 	int exercises()
 	{
 		Simple_window win(Point(100, 100), 600, 600, "Wykresy funkcji");
@@ -28,8 +41,11 @@ namespace Ex15
 		x.set_color(Color::red);
 		y.set_color(Color::red);
 		
+		Function one(ones, r_min, r_max, orig, 400);
+
 		win.attach(x);
 		win.attach(y);
+		win.attach(one);
 		win.wait_for_button();
 
 		return 0;
