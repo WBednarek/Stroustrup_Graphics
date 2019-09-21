@@ -100,7 +100,7 @@ namespace Ex15
 			case ';': case ':': case '"': case '\'':
 			case '[': case ']': case '*': case '&':
 			case '^': case '%': case '$': case '#':
-			case '@': case '!':
+			case '@': case '!': case ',': // I added the ',' to the code for distinct the name with the separator , (comma)
 				error("Not allowed symol occured in the name ; : \" \' [ ] * & ^ % $ # @ ! ");
 			default:
 				break;
