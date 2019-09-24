@@ -9,22 +9,23 @@
 #include "Rozdzial_13\cwiczenia_13.h"
 #include "Rozdzial_14\cwiczenia_14.h"
 #include "Chapter_15\exercises_15.h"
+#include "Chapter_15\homework_15.h"
 
 int main()
 {
 	system("chcp1250");
 	
 
-	Ex15::exercises();
-
-	//Ex14::cwiczenia();
+	H15::homework();
 	
 
 	/*
+	Ex15::exercises();
+	Ex14::cwiczenia();
 	Ex13::cwiczenia();
 	Ex12::cwiczenia();
-	
-	
+
+
 	*/
 	
 	system("pause");

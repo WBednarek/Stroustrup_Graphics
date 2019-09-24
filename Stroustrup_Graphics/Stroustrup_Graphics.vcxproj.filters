@@ -60,6 +60,9 @@
     <ClCompile Include="Chapter_15\exercises_15.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Chapter_15\homework_15.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Graph.h">
@@ -108,6 +111,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Chapter_15\exercises_15.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Chapter_15\homework_15.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

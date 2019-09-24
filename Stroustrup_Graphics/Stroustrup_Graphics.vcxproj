@@ -163,6 +163,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Chapter_15\exercises_15.cpp" />
+    <ClCompile Include="Chapter_15\homework_15.cpp" />
     <ClCompile Include="Rozdzial_14\D22.cpp" />
     <ClCompile Include="Rozdzial_14\D21.cpp" />
     <ClCompile Include="Rozdzial_14\B2.cpp" />
@@ -180,6 +181,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Chapter_15\exercises_15.h" />
+    <ClInclude Include="Chapter_15\homework_15.h" />
     <ClInclude Include="Rozdzial_14\D22.h" />
     <ClInclude Include="Rozdzial_14\D21.h" />
     <ClInclude Include="Rozdzial_14\B2.h" />
