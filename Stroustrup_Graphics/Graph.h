@@ -163,6 +163,7 @@ protected:
     virtual void draw_lines() const;   // draw the appropriate lines
     void add(Point p);                 // add p to points
     void set_point(int i,Point p);     // points[i]=p;
+	void clear_points() { points.clear(); }; // Added for Chapter 15 exercise 2
 private:
     vector<Point> points;              // not used by all shapes
     Color lcolor;                      // color for lines and characters

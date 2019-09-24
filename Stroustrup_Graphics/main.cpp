@@ -15,20 +15,29 @@ int main()
 {
 	system("chcp1250");
 	
+	try {
+		H15::homework();
+		
 
-	H15::homework();
-	
-
-	/*
-	Ex15::exercises();
-	Ex14::cwiczenia();
-	Ex13::cwiczenia();
-	Ex12::cwiczenia();
+		/*
+		Ex15::exercises();
+		Ex14::cwiczenia();
+		Ex13::cwiczenia();
+		Ex12::cwiczenia();
 
 
-	*/
-	
-	system("pause");
+		*/
+
+		system("pause");
+	}
+	catch (exception& e) {
+		cerr << "exception: " << e.what() << endl;
+		keep_window_open();
+	}
+	catch (...) {
+		cerr << "exception\n";
+		keep_window_open();
+	}
 
 	return 0;
 }

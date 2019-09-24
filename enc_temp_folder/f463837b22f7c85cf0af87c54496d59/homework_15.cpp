@@ -177,7 +177,7 @@ namespace H15
 
 		Simple_window win(Point(100, 100), 600, 600, "Homework chapter 15");
 		Fct homework2(square, r_min, r_max, orig, graph_resolution, xscale, yscale);
-		homework2.reset_function(pow3); // works
+		homework2.reset_function(pow3);
 		//homework2.reset_orig(Point(150, 150)); //works
 		win.attach(homework2);
 		win.wait_for_button();
