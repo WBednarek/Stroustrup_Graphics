@@ -15,7 +15,7 @@ namespace H15
 	class Fct : public Graph_lib::Shape {
 	public:
 		Fct(Graph_lib::Fct f, double r1, double r2, Point orig,
-			int count, double xscale, double yscale);
+			int count, double xscale, double yscale, double prec);
 	
 		void reset();
 		void reset_function(Graph_lib::Fct* new_function);
@@ -25,6 +25,7 @@ namespace H15
 		void reset_count(int new_count);
 		void reset_xscale(double new_xscale);
 		void reset_yscale(double new_yscale);
+		void reset_precision(double new_precision);
 
 	private:
 		Graph_lib::Fct* f1;
@@ -32,6 +33,7 @@ namespace H15
 		Point orig;
 		int count;
 		double xscale, yscale;
+		double precision; // 1 is the best presicion, precision closer to one - better
 
 	};
 

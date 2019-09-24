@@ -36,7 +36,7 @@ namespace H15
 //Stroustrup: Programming -- Principles and Practice Using C++; Chapter 15, homework 2
 
 	Fct::Fct(Graph_lib::Fct f, double r1, double r2, Point orig,
-		int count, double xscale, double yscale) : f1(f), r1(r1), r2(r2), orig(orig), count(count), xscale(xscale), yscale(yscale)
+		int count, double xscale, double yscale, double prec) : f1(f), r1(r1), r2(r2), orig(orig), count(count), xscale(xscale), yscale(yscale), precision(prec)
 	{
 		reset();
 	}
@@ -44,13 +44,16 @@ namespace H15
 	void Fct::reset()
 	{
 		if (r2 - r1 <= 0) error("r2-r1 > 0. The range is incorrect");
-		if (count <= 0) error("Number of segments is less than 0");
+		if (count <= 0) error("count (number of segments) is less than 0");
+		if (precision < 1) error("presiiosn must be 1 or bigger");
 		double dist = (r2 - r1) / count;
 		double r = r1;
 		Graph_lib::Shape::clear_points();
 		for (int i = 0; i < count; ++i)
 		{
-			add(Point(int(r * xscale) + orig.x, orig.y - int(f1(r) * yscale)));
+			add(Point(int(int(r * xscale/precision)*precision) + orig.x, orig.y - int(int(f1(r) * yscale/precision)*precision))); //Closer to 1 presicion is better
+			//Situation precision = 7, r*xscale = 20.6 ->  20.6/7 = 2.943, int(2.943) = 2 ->  2*7 = 14, so very imprecise
+			//Situation precision = 1, r*xscale = 20.6 ->  20.6/1 = 20.6, int(20.6) = 20 ->  20*1 = 20, so very precise
 			r += dist;
 		}
 	}
@@ -111,6 +114,13 @@ namespace H15
 	{
 		if (new_yscale <= 0) error("yscale must be bigger than 0");
 		xscale = new_yscale;
+		reset();
+	}
+
+	void Fct::reset_precision(double new_precision)
+	{
+		if (new_precision < 1) error("presiiosn must be 1 or bigger");
+		precision = new_precision;
 		reset();
 	}
 
@@ -175,9 +185,11 @@ namespace H15
 
 		const int graph_resolution = 300;
 
+		const double graph_presicion = 1; // 1 is the best presicion, precision closer to one - better
+
 		Simple_window win(Point(100, 100), 600, 600, "Homework chapter 15");
-		Fct homework2(square, r_min, r_max, orig, graph_resolution, xscale, yscale);
-		homework2.reset_function(pow3); // works
+		Fct homework2(square, r_min, r_max, orig, graph_resolution, xscale, yscale, graph_presicion);
+		//homework2.reset_function(pow3); // works
 		//homework2.reset_orig(Point(150, 150)); //works
 		win.attach(homework2);
 		win.wait_for_button();
