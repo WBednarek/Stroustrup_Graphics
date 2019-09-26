@@ -1,0 +1,4 @@
+^C:\USERS\WIKTOR\SOURCE\REPOS\WBEDNAREK\STROUSTRUP_GRAPHICS\FLTK-1.1.10\TEST\MANDELBROT_UI.FL
+cd ..\test 
+..\fluid\fluidd -c mandelbrot_ui.fl 
+cd ..\visualc

@@ -153,6 +153,10 @@ namespace H15
 		return pow(base, pow_of_three);
 	}
 
+	double sin_cos_squared(double x)
+	{
+		return sin(x) * sin(x) + cos(x) * cos(x);
+	}
 
 	
 	int homework()
@@ -170,8 +174,8 @@ namespace H15
 		const int xspace = 100;
 		const int yspace = 100;
 
-		const int xlength = xmax - xoffset - xspace;
-		const int ylength = ymax - yoffset - yspace;
+		const int xlength = xmax - xoffset - xspace; // 400 pixeles
+		const int ylength = ymax - yoffset - yspace; // 400 pixeles
 
 		const int xscale = 20;
 		const int yscale = 20;
@@ -179,20 +183,57 @@ namespace H15
 		const int r_min = -10;
 		const int r_max = 11;
 
-		const int scaled_length = abs(r_min - r_max) - 1; // length of 20 on axis which is eqivalent of 400 pixels (I think...)
+		const int number_of_notches = r_max - r_min -1; // 20
 
-		const Point orig(xmax / 2, ymax / 2);
+		const int scaled_length = abs(r_min - r_max) - 1; // length of 20 on axis which is eqivalent of 400 pixels 
+
+		const Point orig(xmax / 2, ymax / 2); // Point(xmax/2, ymax/2) corresponds to Point(0,0) on displayed label
 
 		const int graph_resolution = 300;
-
+		const int PI = _Pi;
 		const double graph_presicion = 1; // 1 is the best presicion, precision closer to one - better
 
 		Simple_window win(Point(100, 100), 600, 600, "Homework chapter 15");
-		Fct homework2(square, r_min, r_max, orig, graph_resolution, xscale, yscale, graph_presicion);
+		Axis x_axis(Axis::x, Point(xoffset, ymax / 2), xlength, number_of_notches, "x asis");
+		
+		Axis y_axis(Axis::y, Point(xmax / 2, ymax-yoffset), ylength, number_of_notches, "y asis"); // Axis goes up from point (ymax-yoffset) = 500, to ylength = 100
+		Fct sine(sin, r_min, r_max, orig, graph_resolution, xscale, yscale, graph_presicion);
+		double x_sine_label = orig.x + (PI / 2)*xscale+15; // Label over the PI/2 heap on x axis in sine function
+		double y_sine_label = orig.y - sin(PI / 2)*yscale - 5; // By subtracting we go up on y axis
+		Text sine_label(Point(x_sine_label, y_sine_label), "sine");
+		sine.set_color(Color::blue);
+		sine_label.set_color(Color::blue);
+		
+		Fct cosine(cos, r_min, r_max, orig, graph_resolution, xscale, yscale, graph_presicion);
+		double x_cos_label = orig.x + PI*xscale; 
+		double y_cos_label = orig.y - cos(PI) * yscale + 10; // To go down we need to add pixels and cos(PI) is negative value, so by subtractng cos(PI) we add it and we go down.
+		Text cosine_label(Point(x_cos_label, y_cos_label), "cosine");
+		cosine.set_color(Color::red);
+		cosine_label.set_color(Color::red);
+
+		Fct sine_cosine_square_sum(sin_cos_squared, r_min, r_max, orig, graph_resolution, xscale, yscale, graph_presicion);
+		double x_sine_cosine_square_sum_label = xoffset;
+		double y_sine_cosine_square_sum_label = orig.y - sin_cos_squared(0) * yscale - 5;
+		Text sine_cosine_square_sum_label(Point(x_sine_cosine_square_sum_label, y_sine_cosine_square_sum_label), "sin(x)*sin(x) + cos(x)*cos(x)");
+
+		
+		win.attach(x_axis);
+		win.attach(y_axis);
+		win.attach(sine);
+		win.attach(sine_label);
+		win.attach(cosine);
+		win.attach(cosine_label);
+		win.attach(sine_cosine_square_sum);
+		win.attach(sine_cosine_square_sum_label);
+
+
+		win.wait_for_button();
+
+
+
+		//Fct homework2(square, r_min, r_max, orig, graph_resolution, xscale, yscale, graph_presicion);
 		//homework2.reset_function(pow3); // works
 		//homework2.reset_orig(Point(150, 150)); //works
-		win.attach(homework2);
-		win.wait_for_button();
 
 		return 0;
 	}

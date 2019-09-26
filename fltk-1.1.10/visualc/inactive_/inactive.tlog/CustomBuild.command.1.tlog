@@ -1,0 +1,4 @@
+^C:\USERS\WIKTOR\SOURCE\REPOS\WBEDNAREK\STROUSTRUP_GRAPHICS\FLTK-1.1.10\TEST\INACTIVE.FL
+cd ..\test 
+..\fluid\fluidd -c inactive.fl 
+cd ..\visualc
