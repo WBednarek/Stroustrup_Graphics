@@ -158,6 +158,29 @@ namespace H15
 		return sin(x) * sin(x) + cos(x) * cos(x);
 	}
 
+
+	double term_Leibniz(double x)
+	{
+		return pow(-1,x) / (2*x+1);
+	}
+
+	double Leibniz_series(double x, int num_of_terms)
+	{
+		double sum = 0;
+		for (int i = 0; i < num_of_terms; ++i)
+		{
+			sum += term_Leibniz(i);
+		}
+		return sum;
+	}
+
+	int LeibnizN_num_of_terms = 2;
+
+	double LeibnizN_terms(double x)
+	{
+		return Leibniz_series(x, LeibnizN_num_of_terms);
+	}
+
 	
 	int homework()
 	{
@@ -190,22 +213,47 @@ namespace H15
 		const Point orig(xmax / 2, ymax / 2); // Point(xmax/2, ymax/2) corresponds to Point(0,0) on displayed label
 
 		const int graph_resolution = 300;
-		const int PI = _Pi;
+		const double PI = _Pi;
 		const double graph_presicion = 1; // 1 is the best presicion, precision closer to one - better
 
+	
+	
 		Simple_window win(Point(100, 100), 600, 600, "Homework chapter 15");
 		Axis x_axis(Axis::x, Point(xoffset, ymax / 2), xlength, number_of_notches, "x asis");
+		Axis y_axis(Axis::y, Point(xmax / 2, ymax - yoffset), ylength, number_of_notches, "y asis"); // Axis goes up from point (ymax-yoffset) = 500, to ylength = 100
+		win.attach(x_axis);
+		win.attach(y_axis);
+
+
+
+
+		for (int i = 0; i < 30; ++i)
+		{
+			ostringstream title;
+			title << "The estimation of Leibniz series; n==" << i;
+			win.set_label(title.str());
+			LeibnizN_num_of_terms = i;
+			Fct Leibniz(LeibnizN_terms, r_min, r_max, orig, graph_resolution, xscale, yscale, graph_presicion);
+			win.attach(Leibniz);
+			win.wait_for_button();
+			win.detach(Leibniz);
+		}
 		
-		Axis y_axis(Axis::y, Point(xmax / 2, ymax-yoffset), ylength, number_of_notches, "y asis"); // Axis goes up from point (ymax-yoffset) = 500, to ylength = 100
+	
+
+		/*
+		Exercise 4
+
+	
 		Fct sine(sin, r_min, r_max, orig, graph_resolution, xscale, yscale, graph_presicion);
 		double x_sine_label = orig.x + (PI / 2)*xscale+15; // Label over the PI/2 heap on x axis in sine function
 		double y_sine_label = orig.y - sin(PI / 2)*yscale - 5; // By subtracting we go up on y axis
 		Text sine_label(Point(x_sine_label, y_sine_label), "sine");
 		sine.set_color(Color::blue);
 		sine_label.set_color(Color::blue);
-		
+
 		Fct cosine(cos, r_min, r_max, orig, graph_resolution, xscale, yscale, graph_presicion);
-		double x_cos_label = orig.x + PI*xscale; 
+		double x_cos_label = orig.x + PI*xscale;
 		double y_cos_label = orig.y - cos(PI) * yscale + 10; // To go down we need to add pixels and cos(PI) is negative value, so by subtractng cos(PI) we add it and we go down.
 		Text cosine_label(Point(x_cos_label, y_cos_label), "cosine");
 		cosine.set_color(Color::red);
@@ -216,19 +264,13 @@ namespace H15
 		double y_sine_cosine_square_sum_label = orig.y - sin_cos_squared(0) * yscale - 5;
 		Text sine_cosine_square_sum_label(Point(x_sine_cosine_square_sum_label, y_sine_cosine_square_sum_label), "sin(x)*sin(x) + cos(x)*cos(x)");
 
-		
-		win.attach(x_axis);
-		win.attach(y_axis);
 		win.attach(sine);
 		win.attach(sine_label);
 		win.attach(cosine);
 		win.attach(cosine_label);
 		win.attach(sine_cosine_square_sum);
 		win.attach(sine_cosine_square_sum_label);
-
-
-		win.wait_for_button();
-
+		*/
 
 
 		//Fct homework2(square, r_min, r_max, orig, graph_resolution, xscale, yscale, graph_presicion);
