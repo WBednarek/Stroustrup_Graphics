@@ -178,31 +178,127 @@ namespace H15
 
 	//------------------------------------------------------------------------------
 
-	Bar_chart::Bar_chart(vector<double> values, Point orig, double width, double xscale, double yscale)
+	Bar_chart::Bar_chart(vector<double> values, Point orig, double width, double xscale, double yscale) 
+		: bar_values(values), bar_orig(orig), xscale(xscale), yscale(yscale), label(Point(0,0),"lab")
 	{
 		double bar_width = 0;
-		
 		//val.push_back(new Rectangle(Point(orig.x, orig.y - 4 * yscale), 1 * xscale, 4 * yscale));
 
-	
 		for (int i = 0; i < values.size(); ++i)
 		{
-			val.push_back(new Rectangle( Point(orig.x + bar_width, orig.y - values[i] * yscale), 1 * xscale, values[i] * yscale) );
+			bars_points.push_back(Point(orig.x + bar_width, orig.y - values[i] * yscale));
+			val.push_back(new Rectangle(Point(bars_points[i]) , 1 * xscale, values[i] * yscale) );
 			
 			bar_width += width;
 		}	
-		
-		
+		labels_init();
+		transfer_doubles_to_strings(values);
+		init_chart_label();
 	}
+
+	//------------------------------------------------------------------------------
 
 	void Bar_chart::draw_lines() const
 	{
 		Shape::draw_lines();
+		label.draw();
 		for (int i = 0; i < val.size(); ++i)
 		{
 			val[i].draw();
+			labels[i].draw();
+		
+		}		
+	}
+
+	//------------------------------------------------------------------------------
+
+	void Bar_chart::init_chart_label()
+	{
+		int chart_centre_x = bar_values.size() / 2;
+		double x = bar_orig.x + chart_centre_x * xscale;
+		double y = bar_orig.y - find_max_value(bar_values) * yscale - 10;
+		label.move(x, y);
+	}
+
+	void Bar_chart::set_chart_label(string name, Color c = Color::red)
+	{
+		label.set_label(name);
+		label.set_color(c);
+	}
+
+
+	//------------------------------------------------------------------------------
+
+	double Bar_chart::find_max_value(const vector<double>& vec)
+	{
+		int max = vec[0];
+		for (int i = 1; i < vec.size(); ++i)
+		{
+			if (vec[i] > max)
+			{
+				max = vec[i];
+			}
+		}
+		return max;
+	}
+
+	//------------------------------------------------------------------------------
+
+	void Bar_chart::labels_init()
+	{
+		double x = 0;
+		double y = 0;
+		for (int i = 0; i < bars_points.size(); ++i)
+		{
+			labels.push_back(new Text(Point(0, 0), "init"));
 		}
 	}
+
+	//------------------------------------------------------------------------------
+
+	void Bar_chart::set_bar_label(int bar_num, string lab = "ini")
+	{
+		if (bar_num > bars_points.size()) error("There is no such bar element to be labeled");
+		double x = bars_points[bar_num].x;
+		double y = bars_points[bar_num].y - 5;
+		//double y = bar_orig.y+15; // If I would like to have the selected bar label on the bottom of chart
+		labels[bar_num].move(x, y);
+		labels[bar_num].set_label(bar_values_str[bar_num]);
+		
+	}
+
+	//------------------------------------------------------------------------------
+
+	string Bar_chart::set_double_precision(double num, int precision)
+	{
+		std::ostringstream streamObj3;
+
+		// Set Fixed -Point Notation
+		streamObj3 << std::fixed;
+
+		// Set precision to 2 digits
+		streamObj3 << std::setprecision(precision);
+
+		//Add double to stream
+		streamObj3 << num;
+
+		// Get string from output string stream
+		std::string strObj3 = streamObj3.str();
+
+		return strObj3;
+
+	}
+
+	void Bar_chart::transfer_doubles_to_strings(const vector<double>& vec)
+	{
+		const int custom_precision = 1;
+		for (int i = 0; i < vec.size(); ++i)
+		{	
+			string val_precision_2 = set_double_precision(bar_values[i], custom_precision);
+			bar_values_str.push_back(val_precision_2);
+		}
+	}
+
 
 
 	int homework()
@@ -247,15 +343,19 @@ namespace H15
 		win.attach(x_axis);
 		win.attach(y_axis);
 
+		//Exercise 7
 		vector<double> vals = { 9.2, 4,3,1,7,5 };
-		Bar_chart bar_ch(vals,orig,xscale,xscale,yscale);
-		win.attach(bar_ch);
+		Bar_chart bar_chart(vals,orig,xscale,xscale,yscale);
+		bar_chart.set_bar_color(0);
+		bar_chart.set_bar_label(1);
+		bar_chart.set_bar_label(0);
+		bar_chart.set_chart_label("The chart",Color::dark_cyan);
+		win.attach(bar_chart);
+
+
+
 		win.wait_for_button();
 
-
-
-	
-	
 
 		/*
 
