@@ -38,5 +38,15 @@ namespace H15
 	};
 
 
+	struct Bar_chart : public Graph_lib::Shape
+	{
+
+		Bar_chart(vector<double> values, Point orig, double width, double xscale, double yscale);
+		void draw_lines() const;// !!!!!!!!!!!!!!!!!!!!!!!!!!!   I have no idea why but the code does not work without it. I Think we need to inherit this function.
+		//Hovewer where is this function invoked?! I am not using it explicitly, have no idea what is happening....
+		Vector_ref<Rectangle> val;
+	};
+
+
 
 }

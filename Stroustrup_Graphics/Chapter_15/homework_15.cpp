@@ -135,34 +135,27 @@ namespace H15
 
 	//------------------------------------------------------------------------------
 
-	/*double pow(double base, int exp)
-	{
-		if (exp == 0) return 1;
-		if (exp == 1) return base;
-		while (exp > 1)
-		{
-			base *= base;
-			--exp;
-		}
-		return base;
-	}*/
-
 	double pow3(double base)
 	{
 		const double pow_of_three = 3;
 		return pow(base, pow_of_three);
 	}
 
+	//------------------------------------------------------------------------------
+
 	double sin_cos_squared(double x)
 	{
 		return sin(x) * sin(x) + cos(x) * cos(x);
 	}
 
+	//------------------------------------------------------------------------------
 
 	double term_Leibniz(double x)
 	{
 		return pow(-1,x) / (2*x+1);
 	}
+
+	//------------------------------------------------------------------------------
 
 	double Leibniz_series(double x, int num_of_terms)
 	{
@@ -174,6 +167,8 @@ namespace H15
 		return sum;
 	}
 
+	//------------------------------------------------------------------------------
+
 	int LeibnizN_num_of_terms = 2;
 
 	double LeibnizN_terms(double x)
@@ -181,7 +176,35 @@ namespace H15
 		return Leibniz_series(x, LeibnizN_num_of_terms);
 	}
 
+	//------------------------------------------------------------------------------
+
+	Bar_chart::Bar_chart(vector<double> values, Point orig, double width, double xscale, double yscale)
+	{
+		double bar_width = 0;
+		
+		//val.push_back(new Rectangle(Point(orig.x, orig.y - 4 * yscale), 1 * xscale, 4 * yscale));
+
 	
+		for (int i = 0; i < values.size(); ++i)
+		{
+			val.push_back(new Rectangle( Point(orig.x + bar_width, orig.y - values[i] * yscale), 1 * xscale, values[i] * yscale) );
+			
+			bar_width += width;
+		}	
+		
+		
+	}
+
+	void Bar_chart::draw_lines() const
+	{
+		Shape::draw_lines();
+		for (int i = 0; i < val.size(); ++i)
+		{
+			val[i].draw();
+		}
+	}
+
+
 	int homework()
 	{
 
@@ -224,10 +247,21 @@ namespace H15
 		win.attach(x_axis);
 		win.attach(y_axis);
 
+		vector<double> vals = { 9.2, 4,3,1,7,5 };
+		Bar_chart bar_ch(vals,orig,xscale,xscale,yscale);
+		win.attach(bar_ch);
+		win.wait_for_button();
 
 
 
-		for (int i = 0; i < 30; ++i)
+	
+	
+
+		/*
+
+
+
+			for (int i = 0; i < 30; ++i)
 		{
 			ostringstream title;
 			title << "The estimation of Leibniz series; n==" << i;
@@ -235,13 +269,14 @@ namespace H15
 			LeibnizN_num_of_terms = i;
 			Fct Leibniz(LeibnizN_terms, r_min, r_max, orig, graph_resolution, xscale, yscale, graph_presicion);
 			win.attach(Leibniz);
-			win.wait_for_button();
+		
 			win.detach(Leibniz);
 		}
-		
-	
 
-		/*
+
+
+
+
 		Exercise 4
 
 	
