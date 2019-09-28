@@ -20,6 +20,8 @@ namespace H15
 		return fac;
 	}
 
+	//------------------------------------------------------------------------------
+
 	void compare_factorials(int n)
 	{
 		
@@ -191,9 +193,10 @@ namespace H15
 			
 			bar_width += width;
 		}	
-		labels_init();
 		transfer_doubles_to_strings(values);
 		init_chart_label();
+		labels_init();
+		
 	}
 
 	//------------------------------------------------------------------------------
@@ -220,12 +223,19 @@ namespace H15
 		label.move(x, y);
 	}
 
-	void Bar_chart::set_chart_label(string name, Color c = Color::red)
+	//------------------------------------------------------------------------------
+
+	void Bar_chart::set_chart_label(string name)
 	{
 		label.set_label(name);
-		label.set_color(c);
 	}
 
+	//------------------------------------------------------------------------------
+
+	void Bar_chart::set_chart_label_color(Color c = Color::red)
+	{
+		label.set_color(c);
+	}
 
 	//------------------------------------------------------------------------------
 
@@ -248,23 +258,30 @@ namespace H15
 	{
 		double x = 0;
 		double y = 0;
+		//double y = bar_orig.y+15; // If I would like to have the selected bar label on the bottom of chart
 		for (int i = 0; i < bars_points.size(); ++i)
 		{
-			labels.push_back(new Text(Point(0, 0), "init"));
+			x = bars_points[i].x;
+			y = bars_points[i].y - 5;
+			labels.push_back(new Text(Point(x, y), bar_values_str[i]));
 		}
 	}
 
 	//------------------------------------------------------------------------------
 
-	void Bar_chart::set_bar_label(int bar_num, string lab = "ini")
+	void Bar_chart::set_bar_label(int bar_num, string labl)
 	{
 		if (bar_num > bars_points.size()) error("There is no such bar element to be labeled");
-		double x = bars_points[bar_num].x;
-		double y = bars_points[bar_num].y - 5;
-		//double y = bar_orig.y+15; // If I would like to have the selected bar label on the bottom of chart
-		labels[bar_num].move(x, y);
-		labels[bar_num].set_label(bar_values_str[bar_num]);
+		labels[bar_num].set_label(labl);
 		
+	}
+
+	//------------------------------------------------------------------------------
+
+	void Bar_chart::set_bar_color(int bar_num, Color c = Color::magenta)
+	{
+		if (bar_num > val.size()) error("There is no such bar element to color");
+		val[bar_num].set_color(c);
 	}
 
 	//------------------------------------------------------------------------------
@@ -272,22 +289,14 @@ namespace H15
 	string Bar_chart::set_double_precision(double num, int precision)
 	{
 		std::ostringstream streamObj3;
-
-		// Set Fixed -Point Notation
 		streamObj3 << std::fixed;
-
-		// Set precision to 2 digits
 		streamObj3 << std::setprecision(precision);
-
-		//Add double to stream
 		streamObj3 << num;
-
-		// Get string from output string stream
 		std::string strObj3 = streamObj3.str();
-
 		return strObj3;
-
 	}
+
+	//------------------------------------------------------------------------------
 
 	void Bar_chart::transfer_doubles_to_strings(const vector<double>& vec)
 	{
@@ -299,7 +308,7 @@ namespace H15
 		}
 	}
 
-
+	//------------------------------------------------------------------------------
 
 	int homework()
 	{
@@ -346,10 +355,13 @@ namespace H15
 		//Exercise 7
 		vector<double> vals = { 9.2, 4,3,1,7,5 };
 		Bar_chart bar_chart(vals,orig,xscale,xscale,yscale);
-		bar_chart.set_bar_color(0);
-		bar_chart.set_bar_label(1);
-		bar_chart.set_bar_label(0);
-		bar_chart.set_chart_label("The chart",Color::dark_cyan);
+		bar_chart.set_bar_color(0, Color::cyan);
+		bar_chart.set_bar_label(1,"ONE"); 
+		bar_chart.set_bar_label(0, "Zero");
+		bar_chart.set_bar_label(5, "The last");
+		bar_chart.set_chart_label("The chart");
+		bar_chart.set_chart_label_color(Color::dark_green);
+
 		win.attach(bar_chart);
 
 

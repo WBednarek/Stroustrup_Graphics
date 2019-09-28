@@ -44,27 +44,21 @@ namespace H15
 		Bar_chart(vector<double> values, Point orig, double width, double xscale, double yscale);
 		void draw_lines() const;// !!!!!!!!!!!!!!!!!!!!!!!!!!!   I have no idea why but the code does not work without it. I Think we need to inherit this function.
 		//Hovewer where is this function invoked?! I am not using it explicitly, have no idea what is happening....
-
-		void set_bar_color(int bar_num)
-		{
-			if (bar_num > val.size()) error("There is no such bar element to color");
-			val[bar_num].set_color(Color::red);
-		}
-
+		
+		void init_chart_label();
 		void labels_init();
+		void set_bar_color(int bar_num, Color c);
 		void set_bar_label(int bar_num, string lab);
+		void set_chart_label(string name);
+		void set_chart_label_color(Color c);
 		string set_double_precision(double num, int precision);
 		void transfer_doubles_to_strings(const vector<double>& vec);
-		void init_chart_label();
-
+		
 		double find_max_value(const vector<double>& vec);
-		void set_chart_label(string name, Color c);
-
-
+		
 
 		double xscale;
 		double yscale;
-
 		Text label;
 		Vector_ref<Rectangle> val;
 		vector<Point> bars_points; // Stores coordinated of each bar
