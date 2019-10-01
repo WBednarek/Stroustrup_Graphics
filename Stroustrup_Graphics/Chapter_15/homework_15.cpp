@@ -532,12 +532,11 @@ namespace H15
 
 		//const int MAX_FCT = 21;
 		//compare_factorials(MAX_FCT); //exercise 1
+
+		//Exercise 9
 		vector<Pair> pairs;
 		get_pairs("heights_ex_9.txt", pairs);
 		vector<double> quant = get_vector_of_quantities(pairs);
-
-		
-
 		const int number_of_x_notches = quant.size(); // Scaling the axis for diffrent input number
 		const int number_of_y_notches = int(find_max(quant));
 		/*
