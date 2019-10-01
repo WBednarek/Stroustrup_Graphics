@@ -126,10 +126,8 @@ namespace H15
 		reset();
 	}
 
-
-	
-
 	//------------------------------------------------------------------------------
+
 	double square(double x)
 	{
 		return x * x;
@@ -180,23 +178,42 @@ namespace H15
 
 	//------------------------------------------------------------------------------
 
-	Bar_chart::Bar_chart(vector<double> values, Point orig, double width, double xscale, double yscale) 
-		: bar_values(values), bar_orig(orig), xscale(xscale), yscale(yscale), label(Point(0,0),"lab")
+	Bar_chart::Bar_chart(vector<double> values, Point orig, double width, double xscale, double yscale, Bar_labels_position lab_position)
+		: bar_values(values), bar_orig(orig), width(width), xscale(xscale), yscale(yscale), label(Point(0,0),"lab"), labels_position(lab_position)
 	{
-		double bar_width = 0;
-		//val.push_back(new Rectangle(Point(orig.x, orig.y - 4 * yscale), 1 * xscale, 4 * yscale));
-
-		for (int i = 0; i < values.size(); ++i)
-		{
-			bars_points.push_back(Point(orig.x + bar_width, orig.y - values[i] * yscale));
-			val.push_back(new Rectangle(Point(bars_points[i]) , 1 * xscale, values[i] * yscale) );
-			
-			bar_width += width;
-		}	
-		transfer_doubles_to_strings(values);
+		init_bars_coordinates();
+		transfer_doubles_to_strings(bar_values);
 		init_chart_label();
-		labels_init();
+		labels_init(labels_position);
 		
+	}
+
+	//------------------------------------------------------------------------------
+
+	Bar_chart::Bar_chart(vector<Pair> pairs, Point orig, double width, double xscale, double yscale, Bar_labels_position lab_position)
+		:  bar_pairs(pairs), bar_orig(orig), width(width), xscale(xscale), yscale(yscale), label(Point(0, 0), "lab"), labels_position(lab_position)
+	{
+		init_bar_values();
+		init_bars_coordinates();
+		transfer_doubles_to_strings(bars_labels_double);
+		init_chart_label();
+		labels_init(labels_position);
+	}
+
+	//------------------------------------------------------------------------------
+
+	Bar_chart::Bar_chart(Bar_chart& bg)
+		: bar_values(bg.bar_values), bar_orig(bg.bar_orig), width(bg.width), xscale(bg.xscale), yscale(bg.yscale), label(Point(0, 0), "lab"), labels_position(bg.labels_position)
+	{
+		init_bars_coordinates();
+		transfer_doubles_to_strings(bar_values);
+		init_chart_label();
+		labels_init(labels_position);
+	}
+
+	Bar_chart::Bar_chart() : label(Point(0, 0), "lab")
+	{
+
 	}
 
 	//------------------------------------------------------------------------------
@@ -211,6 +228,31 @@ namespace H15
 			labels[i].draw();
 		
 		}		
+	}
+
+	//------------------------------------------------------------------------------
+
+	void Bar_chart::init_bar_values()
+	{
+		for (int i = 0; i < bar_pairs.size(); ++i)
+		{
+			bar_values.push_back(bar_pairs[i].number);
+			bars_labels_double.push_back(bar_pairs[i].height);
+		}
+	}
+	
+	//------------------------------------------------------------------------------
+
+	void Bar_chart::init_bars_coordinates()
+	{
+		double bar_width = 0;
+		//val.push_back(new Rectangle(Point(orig.x, orig.y - 4 * yscale), 1 * xscale, 4 * yscale));
+		for (int i = 0; i < bar_values.size(); ++i)
+		{
+			bars_points.push_back(Point(bar_orig.x + bar_width, bar_orig.y - bar_values[i] * yscale));
+			val.push_back(new Rectangle(Point(bars_points[i]), 1 * xscale, bar_values[i] * yscale));
+			bar_width += width;
+		}
 	}
 
 	//------------------------------------------------------------------------------
@@ -239,32 +281,34 @@ namespace H15
 
 	//------------------------------------------------------------------------------
 
-	double Bar_chart::find_max_value(const vector<double>& vec)
-	{
-		int max = vec[0];
-		for (int i = 1; i < vec.size(); ++i)
-		{
-			if (vec[i] > max)
-			{
-				max = vec[i];
-			}
-		}
-		return max;
-	}
-
-	//------------------------------------------------------------------------------
-
-	void Bar_chart::labels_init()
+	void Bar_chart::labels_init(Bar_labels_position lab)
 	{
 		double x = 0;
 		double y = 0;
-		//double y = bar_orig.y+15; // If I would like to have the selected bar label on the bottom of chart
-		for (int i = 0; i < bars_points.size(); ++i)
+		switch (lab)
 		{
-			x = bars_points[i].x;
-			y = bars_points[i].y - 5;
-			labels.push_back(new Text(Point(x, y), bar_values_str[i]));
+		case H15::Bar_chart::labels_bottom:
+			y = bar_orig.y+15; // If I would like to have the selected bar label on the bottom of the chart
+			for (int i = 0; i < bars_points.size(); ++i)
+			{
+				x = bars_points[i].x;
+				labels.push_back(new Text(Point(x, y), bar_values_str[i]));
+			}
+			break;
+		case H15::Bar_chart::labels_up:
+			y = 0;
+			for (int i = 0; i < bars_points.size(); ++i)
+			{
+				x = bars_points[i].x;
+				y = bars_points[i].y - 5;
+				labels.push_back(new Text(Point(x, y), bar_values_str[i]));
+			}
+			break;
+		default:
+			error("There is no such bar label position");
+			break;
 		}
+		
 	}
 
 	//------------------------------------------------------------------------------
@@ -300,12 +344,159 @@ namespace H15
 
 	void Bar_chart::transfer_doubles_to_strings(const vector<double>& vec)
 	{
-		const int custom_precision = 1;
+		const int custom_precision = 0;
 		for (int i = 0; i < vec.size(); ++i)
 		{	
 			string val_precision_2 = set_double_precision(bar_values[i], custom_precision);
 			bar_values_str.push_back(val_precision_2);
 		}
+	}
+
+	//------------------------------------------------------------------------------
+
+	double Bar_chart::find_max_value(const vector<double>& vec)
+	{
+		int max = vec[0];
+		for (int i = 1; i < vec.size(); ++i)
+		{
+			if (vec[i] > max)
+			{
+				max = vec[i];
+			}
+		}
+		return max;
+	}
+
+	//------------------------------------------------------------------------------
+
+	Pair::Pair(double height, int num) : height(height), number(num)
+	{
+		if (height <= 0) error("Height must be greater than 0");
+		if (number < 1) error("There must be at least 1 emenet in Pair");
+	}
+
+	//------------------------------------------------------------------------------
+
+	Histogram::Histogram(vector<Pair>& pairs, Bar_chart& b) : bch(b)
+	{
+		bch.labels_position = Bar_chart::labels_bottom;
+		set_bar_values(pairs);
+		bch.init_bars_coordinates();
+		bch.labels_init(Bar_chart::labels_bottom);
+		
+	}
+
+	//------------------------------------------------------------------------------
+
+	void Histogram::draw_lines() const
+	{
+		bch.draw_lines();
+	}
+
+	void Histogram::set_bar_values(vector<Pair>& pairs)
+	{
+		bch.bar_values.clear();
+		bch.bar_values_str.clear();
+		vector<double> histogram_quantities;
+		for (int i = 0; i < pairs.size(); ++i)
+		{
+			bch.bar_values.push_back(pairs[i].number);
+			histogram_quantities.push_back(pairs[i].number);
+		}
+		bch.transfer_doubles_to_strings(histogram_quantities);
+	}
+
+	//------------------------------------------------------------------------------
+
+	ifstream& operator >> (ifstream& is, vector<Pair>& vec_pairs)
+	{
+		while (is)
+		{
+			char ch;
+			double height = 7878484591;
+			double quantity = 118559457;
+
+			is >> ch;
+			if (ch != '(')
+			{
+				is.unget();
+				is.clear(ios_base::failbit);
+				break;
+			}
+			is >> ch;
+			if (!isdigit(ch))
+			{
+				is.unget();
+				is.clear(ios_base::failbit);
+				break;
+			}
+			is.unget();
+			is >> height;
+			is >> ch;
+			if (ch != ',')
+			{
+				is.unget();
+				is.clear(ios_base::failbit);
+				break;
+			}
+			is >> ch;
+			if (!isdigit(ch))
+			{
+				is.unget();
+				is.clear(ios_base::failbit);
+				break;
+			}
+			is.unget();
+			is >> quantity;
+			is >> ch;
+			if (ch != ')')
+			{
+				is.unget();
+				is.clear(ios_base::failbit);
+				break;
+			}
+			is >> ch;
+			if (is.eof())
+			{
+				ch = ',';
+			}
+
+			if (ch != ',')
+			{
+				is.unget();
+				is.clear(ios_base::failbit);
+				break;
+			}
+
+
+			vec_pairs.push_back(Pair(height, quantity));
+
+		}
+
+		return is;
+	}
+
+	//------------------------------------------------------------------------------
+
+	ofstream& operator << (ofstream& ofs, vector<Pair>& points)
+	{
+		for (int i = 0; i < points.size()-1; ++i)
+		{
+			ofs << "(" << points[i].height << "," << points[i].number << "), ";
+		}
+		ofs << "(" << points[points.size()-1].height << "," << points[points.size()-1].number << ")";
+
+		return ofs;
+	}
+
+	//------------------------------------------------------------------------------
+
+	vector<Pair> get_pairs(string filename, vector<Pair>& points)
+	{
+		ifstream ifs;
+		ifs.open(filename.c_str());
+		ifs >> points;
+		return points;
 	}
 
 	//------------------------------------------------------------------------------
@@ -328,48 +519,64 @@ namespace H15
 		const int xlength = xmax - xoffset - xspace; // 400 pixeles
 		const int ylength = ymax - yoffset - yspace; // 400 pixeles
 
-		const int xscale = 20;
-		const int yscale = 20;
+		const int xscale = 40;
+		const int yscale = 10;
 
-		const int r_min = -10;
-		const int r_max = 11;
+		const int r_min = -(xscale/2);
+		const int r_max = xscale/2 + 1;
 
-		const int number_of_notches = r_max - r_min -1; // 20
+		const int number_of_x_notches = xlength / xscale; // The best if it is divided by xlenght without the rest
+		const int number_of_y_notches = ylength / yscale; // The best if it is divided by ylenght without the rest
 
 		const int scaled_length = abs(r_min - r_max) - 1; // length of 20 on axis which is eqivalent of 400 pixels 
 
-		const Point orig(xmax / 2, ymax / 2); // Point(xmax/2, ymax/2) corresponds to Point(0,0) on displayed label
+		const Point orig(xoffset, ymax - yoffset); // Point(xmax/2, ymax/2) corresponds to Point(0,0) on displayed label
 
 		const int graph_resolution = 300;
 		const double PI = _Pi;
 		const double graph_presicion = 1; // 1 is the best presicion, precision closer to one - better
 
 	
-	
 		Simple_window win(Point(100, 100), 600, 600, "Homework chapter 15");
-		Axis x_axis(Axis::x, Point(xoffset, ymax / 2), xlength, number_of_notches, "x asis");
-		Axis y_axis(Axis::y, Point(xmax / 2, ymax - yoffset), ylength, number_of_notches, "y asis"); // Axis goes up from point (ymax-yoffset) = 500, to ylength = 100
+		Axis x_axis(Axis::x, Point(orig.x, orig.y), xlength, number_of_x_notches, "x asis");
+		Axis y_axis(Axis::y, Point(orig.x, orig.y), ylength, number_of_y_notches, "y asis");
 		win.attach(x_axis);
 		win.attach(y_axis);
 
-		//Exercise 7
-		vector<double> vals = { 9.2, 4,3,1,7,5 };
-		Bar_chart bar_chart(vals,orig,xscale,xscale,yscale);
+		//Exercise 8
+		vector<Pair> pairs;
+		get_pairs("heights_ex_9.txt", pairs);
+		Bar_chart bar_chart(pairs,orig,xscale,xscale,yscale, Bar_chart::labels_bottom); // Histogram
 		bar_chart.set_bar_color(0, Color::cyan);
-		bar_chart.set_bar_label(1,"ONE"); 
-		bar_chart.set_bar_label(0, "Zero");
-		bar_chart.set_bar_label(5, "The last");
-		bar_chart.set_chart_label("The chart");
-		bar_chart.set_chart_label_color(Color::dark_green);
+		bar_chart.set_chart_label("Histogram");
+		bar_chart.set_chart_label_color(Color::dark_green);	
 
+		string nam = "saved_pairs.txt"; // The saved file will be strored in Debug folder of the project's root
+		ofstream ofs(nam.c_str());
+		ofs << pairs;
 		win.attach(bar_chart);
-
-
 
 		win.wait_for_button();
 
 
 		/*
+		Exercise 7
+		vector<double> vals = { 9.2, 4,3,1,7,5 };
+		Bar_chart bar_chart(vals,orig,xscale,xscale,yscale);
+		bar_chart.set_bar_color(0, Color::cyan);
+		bar_chart.set_bar_label(1,"ONE");
+		bar_chart.set_bar_label(0, "Zero");
+		bar_chart.set_bar_label(5, "The last");
+		bar_chart.set_chart_label("The chart");
+		bar_chart.set_chart_label_color(Color::dark_green);
+
+
+
+		const Point orig(xmax / 2, ymax / 2);// The set if you want to have the axis in the middle of the screen
+		Axis x_axis(Axis::x, Point(xoffset, orig.y), xlength, number_of_notches, "x asis");
+		Axis y_axis(Axis::y, Point(orig.x, ymax - yoffset), ylength, number_of_notches, "y asis"); // Axis goes up from point (ymax-yoffset) = 500, to ylength = 100
+
+
 
 
 

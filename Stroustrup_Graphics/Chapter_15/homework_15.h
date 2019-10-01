@@ -7,6 +7,14 @@
 namespace H15
 {
 
+	struct Pair
+	{
+		double height;
+		int number;
+		Pair(double height, int number);
+	};
+
+
 
 	long long fac(int n);
 	long long fac_iter(int n);
@@ -40,13 +48,18 @@ namespace H15
 
 	struct Bar_chart : public Graph_lib::Shape
 	{
-
-		Bar_chart(vector<double> values, Point orig, double width, double xscale, double yscale);
+		enum Bar_labels_position { labels_bottom, labels_up };
+		Bar_chart();
+		Bar_chart(Bar_chart& bg);
+		Bar_chart(vector<double> values, Point orig, double width, double xscale, double yscale, Bar_labels_position lab_position);
+		Bar_chart(vector<Pair> pairs, Point orig, double width, double xscale, double yscale, Bar_labels_position lab_position);
 		void draw_lines() const;// !!!!!!!!!!!!!!!!!!!!!!!!!!!   I have no idea why but the code does not work without it. I Think we need to inherit this function.
 		//Hovewer where is this function invoked?! I am not using it explicitly, have no idea what is happening....
 		
+		void init_bar_values();
+		void init_bars_coordinates();
 		void init_chart_label();
-		void labels_init();
+		void labels_init(Bar_labels_position lab);
 		void set_bar_color(int bar_num, Color c);
 		void set_bar_label(int bar_num, string lab);
 		void set_chart_label(string name);
@@ -59,15 +72,29 @@ namespace H15
 
 		double xscale;
 		double yscale;
+		double width;
 		Text label;
+		vector<Pair> bar_pairs;
+		Bar_labels_position labels_position;
 		Vector_ref<Rectangle> val;
-		vector<Point> bars_points; // Stores coordinated of each bar
+		vector<Point> bars_points; // Stores coordinates of each bar
 		Vector_ref<Text> labels;
+		
 		Point bar_orig;
 		vector<double> bar_values;
+		vector<double> bars_labels_double;
 		vector<string> bar_values_str;
 	};
 
+	
+
+	struct Histogram : Bar_chart
+	{
+		Histogram(vector<Pair>& pairs, Bar_chart& b);
+		Bar_chart bch;
+		void set_bar_values(vector<Pair>& pairs);
+		void draw_lines() const;
+	};
 
 
 }
