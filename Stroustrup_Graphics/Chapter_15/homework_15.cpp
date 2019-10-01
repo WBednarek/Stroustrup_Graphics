@@ -347,7 +347,7 @@ namespace H15
 		const int custom_precision = 0;
 		for (int i = 0; i < vec.size(); ++i)
 		{	
-			string val_precision_2 = set_double_precision(bar_values[i], custom_precision);
+			string val_precision_2 = set_double_precision(vec[i], custom_precision);
 			bar_values_str.push_back(val_precision_2);
 		}
 	}
@@ -501,12 +501,39 @@ namespace H15
 
 	//------------------------------------------------------------------------------
 
+	double find_max(const vector<double>& max_vec)
+	{
+		double max = max_vec[0];
+		for (int i = 0; i < max_vec.size(); ++i)
+		{
+			if (max_vec[i] > max)
+			{
+				max = max_vec[i];
+			}
+		}
+		return max;
+	}
+
+	vector<double> get_vector_of_quantities(const vector<Pair>& pairs)
+	{
+		vector<double> quantities;
+		for (int i = 0; i < pairs.size(); ++i)
+		{
+			quantities.push_back(pairs[i].number);
+		}
+		return quantities;
+	}
+
 	int homework()
 	{
 
 
 		//const int MAX_FCT = 21;
 		//compare_factorials(MAX_FCT); //exercise 1
+		vector<Pair> pairs;
+		get_pairs("heights_ex_9.txt", pairs);
+		
+
 		const int xmax = 600;
 		const int ymax = 600;
 
@@ -544,8 +571,6 @@ namespace H15
 		win.attach(y_axis);
 
 		//Exercise 8
-		vector<Pair> pairs;
-		get_pairs("heights_ex_9.txt", pairs);
 		Bar_chart bar_chart(pairs,orig,xscale,xscale,yscale, Bar_chart::labels_bottom); // Histogram
 		bar_chart.set_bar_color(0, Color::cyan);
 		bar_chart.set_chart_label("Histogram");
