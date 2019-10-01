@@ -526,6 +526,9 @@ namespace H15
 		return quantities;
 	}
 
+	
+
+
 	int homework()
 	{
 
@@ -588,7 +591,7 @@ namespace H15
 		//Exercise 8
 		Bar_chart bar_chart(pairs,orig,xscale,xscale,yscale, Bar_chart::labels_bottom); // Histogram
 		bar_chart.set_bar_color(0, Color::cyan);
-		bar_chart.set_chart_label("Histogram, women height");
+		bar_chart.set_chart_label("Histogram, female height");
 		bar_chart.set_chart_label_color(Color::dark_green);	
 
 		string nam = "saved_pairs.txt"; // The saved file will be strored in Debug folder of the project's root

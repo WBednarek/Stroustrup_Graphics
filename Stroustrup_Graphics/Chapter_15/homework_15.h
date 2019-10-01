@@ -7,6 +7,11 @@
 namespace H15
 {
 
+
+	long long fac(int n);
+	long long fac_iter(int n);
+	int homework();
+
 	struct Pair
 	{
 		double height;
@@ -14,11 +19,6 @@ namespace H15
 		Pair(double height, int number);
 	};
 
-
-
-	long long fac(int n);
-	long long fac_iter(int n);
-	int homework();
 
 	class Fct : public Graph_lib::Shape {
 	public:
