@@ -47,7 +47,7 @@ namespace H15
 	{
 		if (r2 - r1 <= 0) error("r2-r1 > 0. The range is incorrect");
 		if (count <= 0) error("count (number of segments) is less than 0");
-		if (precision < 1) error("presiiosn must be 1 or bigger");
+		if (precision < 1) error("precision must be 1 or bigger");
 		double dist = (r2 - r1) / count;
 		double r = r1;
 		Graph_lib::Shape::clear_points();
@@ -121,7 +121,7 @@ namespace H15
 
 	void Fct::reset_precision(double new_precision)
 	{
-		if (new_precision < 1) error("presiiosn must be 1 or bigger");
+		if (new_precision < 1) error("precision must be 1 or bigger");
 		precision = new_precision;
 		reset();
 	}
@@ -372,7 +372,7 @@ namespace H15
 	Pair::Pair(double height, int num) : height(height), number(num)
 	{
 		if (height <= 0) error("Height must be greater than 0");
-		if (number < 1) error("There must be at least 1 emenet in Pair");
+		if (number < 1) error("There must be at least 1 element in Pair");
 	}
 
 	//------------------------------------------------------------------------------
@@ -514,6 +514,8 @@ namespace H15
 		return max;
 	}
 
+	//------------------------------------------------------------------------------
+
 	vector<double> get_vector_of_quantities(const vector<Pair>& pairs)
 	{
 		vector<double> quantities;
@@ -532,10 +534,22 @@ namespace H15
 		//compare_factorials(MAX_FCT); //exercise 1
 		vector<Pair> pairs;
 		get_pairs("heights_ex_9.txt", pairs);
+		vector<double> quant = get_vector_of_quantities(pairs);
+
 		
 
-		const int xmax = 600;
-		const int ymax = 600;
+		const int number_of_x_notches = quant.size(); // Scaling the axis for diffrent input number
+		const int number_of_y_notches = int(find_max(quant));
+		/*
+		The case of one vector, remember also to put vals as the parameter of vals object
+
+		vector<double> vals = { 9.2, 4,3,1,7,5 };
+		const int number_of_x_notches = vals.size(); // Scaling the axis for diffrent input number
+		const int number_of_y_notches = int(find_max(vals));
+		*/
+		
+		const int xmax = 800;
+		const int ymax = 800;
 
 		const int xoffset = 100;
 		const int yoffset = 100;
@@ -546,14 +560,14 @@ namespace H15
 		const int xlength = xmax - xoffset - xspace; // 400 pixeles
 		const int ylength = ymax - yoffset - yspace; // 400 pixeles
 
-		const int xscale = 40;
-		const int yscale = 10;
+		const int xscale = xlength / number_of_x_notches;
+		const int yscale = ylength / number_of_y_notches;
 
 		const int r_min = -(xscale/2);
 		const int r_max = xscale/2 + 1;
 
-		const int number_of_x_notches = xlength / xscale; // The best if it is divided by xlenght without the rest
-		const int number_of_y_notches = ylength / yscale; // The best if it is divided by ylenght without the rest
+		//const int number_of_x_notches = xlength / xscale; // The best if it is divided by xlenght without the rest
+		//const int number_of_y_notches = ylength / yscale; // The best if it is divided by ylenght without the rest
 
 		const int scaled_length = abs(r_min - r_max) - 1; // length of 20 on axis which is eqivalent of 400 pixels 
 
@@ -564,16 +578,18 @@ namespace H15
 		const double graph_presicion = 1; // 1 is the best presicion, precision closer to one - better
 
 	
-		Simple_window win(Point(100, 100), 600, 600, "Homework chapter 15");
+		Simple_window win(Point(100, 100), xmax, ymax, "Homework chapter 15");
 		Axis x_axis(Axis::x, Point(orig.x, orig.y), xlength, number_of_x_notches, "x asis");
-		Axis y_axis(Axis::y, Point(orig.x, orig.y), ylength, number_of_y_notches, "y asis");
+		string label_y = "y axis, max represents value of " + to_string(number_of_y_notches);
+		Axis y_axis(Axis::y, Point(orig.x, orig.y), ylength, number_of_y_notches, label_y);
+		
 		win.attach(x_axis);
 		win.attach(y_axis);
 
 		//Exercise 8
 		Bar_chart bar_chart(pairs,orig,xscale,xscale,yscale, Bar_chart::labels_bottom); // Histogram
 		bar_chart.set_bar_color(0, Color::cyan);
-		bar_chart.set_chart_label("Histogram");
+		bar_chart.set_chart_label("Histogram, women height");
 		bar_chart.set_chart_label_color(Color::dark_green);	
 
 		string nam = "saved_pairs.txt"; // The saved file will be strored in Debug folder of the project's root
