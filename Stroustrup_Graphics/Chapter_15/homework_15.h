@@ -53,8 +53,14 @@ namespace H15
 		Bar_chart(Bar_chart& bg);
 		Bar_chart(vector<double> values, Point orig, double width, double xscale, double yscale, Bar_labels_position lab_position);
 		Bar_chart(vector<Pair> pairs, Point orig, double width, double xscale, double yscale, Bar_labels_position lab_position);
-		void draw_lines() const;// !!!!!!!!!!!!!!!!!!!!!!!!!!!   I have no idea why but the code does not work without it. I Think we need to inherit this function.
-		//Hovewer where is this function invoked?! I am not using it explicitly, have no idea what is happening....
+		void draw_lines() const;//The reason why we need to define this function in a derived class (here Bar_chart) from Shape is simple.
+		//draw_lines() is a virtual function in Shape so we should define it in every class that inherits from Shape. 
+		//Theoretically we should but we do not need to, however in this example we need since we will no see anything on a screen.
+		
+		//If draw_lines() function would be pure virtual in Shape we must override it. 
+		//Otherwise we will no be able to create an object of our class - it will be an abstract class.
+		//As a pure virtual function it would be declared in base class Shape as virtual void draw_lines() = 0; without const at the end.
+
 		
 		void init_bar_values();
 		void init_bars_coordinates();
