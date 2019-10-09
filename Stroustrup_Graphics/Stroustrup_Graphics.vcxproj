@@ -165,6 +165,7 @@
     <ClCompile Include="Chapter_15\exercises_15.cpp" />
     <ClCompile Include="Chapter_15\homework_15.cpp" />
     <ClCompile Include="Chapter_16\exercises_16.cpp" />
+    <ClCompile Include="Chapter_16\My_window.cpp" />
     <ClCompile Include="Rozdzial_14\D22.cpp" />
     <ClCompile Include="Rozdzial_14\D21.cpp" />
     <ClCompile Include="Rozdzial_14\B2.cpp" />
@@ -184,6 +185,7 @@
     <ClInclude Include="Chapter_15\exercises_15.h" />
     <ClInclude Include="Chapter_15\homework_15.h" />
     <ClInclude Include="Chapter_16\exercises_16.h" />
+    <ClInclude Include="Chapter_16\My_window.h" />
     <ClInclude Include="Rozdzial_14\D22.h" />
     <ClInclude Include="Rozdzial_14\D21.h" />
     <ClInclude Include="Rozdzial_14\B2.h" />

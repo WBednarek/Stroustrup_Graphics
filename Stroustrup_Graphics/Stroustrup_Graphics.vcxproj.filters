@@ -66,6 +66,9 @@
     <ClCompile Include="Chapter_16\exercises_16.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Chapter_16\My_window.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Graph.h">
@@ -120,6 +123,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Chapter_16\exercises_16.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Chapter_16\My_window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
