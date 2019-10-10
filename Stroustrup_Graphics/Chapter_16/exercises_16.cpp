@@ -45,16 +45,17 @@ namespace Ex16
 	{
 		reference_to<Lines_window>(pw).quit();
 	}
+
 	void Lines_window::quit()
 	{
 		hide();
 	}
 
-
 	void Lines_window::cb_next(Address, Address pw)
 	{
 		reference_to<Lines_window>(pw).next();
 	}
+
 	void Lines_window::next()
 	{
 		int x = next_x.get_int();
@@ -114,7 +115,6 @@ namespace Ex16
 		reference_to<Lines_window>(pw).dashdotdot_pressed();
 		reference_to<Lines_window>(pw).hide_style_menu();
 	}
-
 
 	void Lines_window::cb_style_menu(Address, Address pw)
 	{
