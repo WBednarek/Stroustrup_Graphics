@@ -69,6 +69,9 @@
     <ClCompile Include="Chapter_16\My_window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Chapter_16\homework16_3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Graph.h">
@@ -128,6 +131,9 @@
     <ClInclude Include="Chapter_16\My_window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Chapter_16\homework16_3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="formulka commit.txt" />
@@ -137,6 +143,9 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="fallout.gif">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="image.jpg">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
