@@ -76,7 +76,7 @@ template< class T> struct Vector : public std::vector<T> {
 	explicit Vector(size_type n) :std::vector<T>(n) {}
 	Vector(size_type n, const T& v) :std::vector<T>(n,v) {}
 	template <class I>
-	Vector(I first, I last) : std::vector<T>(first, last) {}
+	Vector(I first_button, I last) : std::vector<T>(first_button, last) {}
 	Vector(initializer_list<T> list) : std::vector<T>(list) {}
 #else
 	using std::vector<T>::vector;	// inheriting constructor
