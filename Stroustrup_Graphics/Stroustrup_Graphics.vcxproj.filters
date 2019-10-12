@@ -72,6 +72,9 @@
     <ClCompile Include="Chapter_16\homework16_3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Chapter_16\homework16_4.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Graph.h">
@@ -132,6 +135,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Chapter_16\homework16_3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Chapter_16\homework16_4.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

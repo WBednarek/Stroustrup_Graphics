@@ -13,6 +13,7 @@
 //#include "Chapter_16\exercises_16.h"
 #include "Chapter_16/My_window.h"
 #include"Chapter_16/homework16_3.h"
+#include"Chapter_16/homework16_4.h"
 
 int main()
 {
@@ -20,10 +21,11 @@ int main()
 	
 	try {
 		
-		H16_3::My_window win(Point(100, 100), 600, 400, "HW16_3");
+		H16_4::My_window win(Point(100, 100), 600, 400, "HW16_3");
 		return gui_main(); // exercises 16
 
 		/*
+		H16_3::My_window win(Point(100, 100), 600, 400, "HW16_3");
 		H16::My_window win(Point(100, 100), 600, 400, "HW16");
 		Ex16::Lines_window win(Point(100, 100), 600, 400, "Lines");
 		H15::homework();

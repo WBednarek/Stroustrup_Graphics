@@ -8,12 +8,12 @@ namespace H16_3
 	struct Button_coord : Button // button that stores its data
 	{
 		Button_coord(Point xy, int w, int h, const string& label, Callback cb, int id);
-		int get_x() { return x; }
-		int get_y() { return y; }
-		int get_width() { return  width; }
-		int get_height() { return height; }
-		string get_label() { return label; }
-		int get_id() { return id; }
+		int get_x() const { return x; }
+		int get_y() const { return y; }
+		int get_width() const { return  width; }
+		int get_height() const { return height; }
+		string get_label() const { return label; }
+		int get_id() const { return id; }
 		void move(int dx, int dy);
 		bool pressed;
 	protected:
@@ -36,7 +36,7 @@ namespace H16_3
 		Button_coord button;
 		Image im;
 		bool button_pushed;
-		Out_box ob;
+		Out_box coordinates_display;
 
 		int rint(int low, int high) { return low + rand() % (high - low); }
 		int true_rand(int low, int high);

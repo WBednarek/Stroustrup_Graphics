@@ -28,12 +28,12 @@ namespace H16_3
 		button(Point(200, 200), 100, 100, "Dalej", cb_next_position, 1),
 		im(Point(200, 200), "fallout.gif"), // fallout.git is 100x100 image
 		button_pushed(false),
-		ob(Point(150, 10), 80, 30, "Current button point")
+		coordinates_display(Point(150, 10), 80, 30, "Current button point")
 	{
 		attach(button);
 		attach(im);
-		attach(ob);
-		display_menu_height = 10 + 30; // this reflects y coordinates of ob and its height so 10 + 30
+		attach(coordinates_display);
+		display_menu_height = 10 + 30; // this reflects y coordinate of coordinates_display variable - its height so 10 + 30
 	}
 
 	
@@ -47,7 +47,7 @@ namespace H16_3
 	{
 		ostringstream os;
 		os << "(" << x << "," << y << ")";
-		ob.put(os.str());
+		coordinates_display.put(os.str());
 	}
 
 	void My_window::next_position()
@@ -59,9 +59,9 @@ namespace H16_3
 		int curr_button_y = button.get_y();
 		//button and image will not get away from the frame of MAX_WIDTHxMAX_HEIGHT window. 
 		//Actually won get away of (MAX_WIDTH + button_width) x (MAX_HEIGHT + button_height) window frame, 
-		//since we walidate point in the upper left corner of the button and image
+		//since we validate point in the upper left corner of the button and image
 		if ((curr_button_x + x) < 0
-			|| (curr_button_y + y) < display_menu_height //to avoid covering out box by image
+			|| (curr_button_y + y) < display_menu_height //to avoid covering out_box field by the image
 			|| (curr_button_x + x) > MAX_WIDTH
 			|| (curr_button_y + y) > MAX_HEIGHT)
 		{
