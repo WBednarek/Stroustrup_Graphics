@@ -28,18 +28,17 @@ namespace H16_5
 	private:
 		const int window_width;
 		const int window_height;
-		const int button_height = 30;
-		const int MAX_X_BORDER = window_width - 2*button_height;
-		const int MAX_Y_BORDER = window_height - button_height;
-		const int radius = 30;
-		const int edge_length = 40;
+		const int MAX_X_BORDER;
+		const int MAX_Y_BORDER;
+		const int button_height;
+		const int edge_length;
+
 		bool draw_button_pushed;
 		Button draw_figure_button;
 		Button next_position_button;
 		In_box x_coordinate_input;
 		In_box y_coordinate_input;
 		Out_box message_box;
-		Vector_ref<Circle> circles;
 		Vector_ref<Hexagon> hexagons;
 
 		int get_x_coordinate();
@@ -50,8 +49,6 @@ namespace H16_5
 		bool is_figure_in_scope(int curr_x, int curr_y);
 		void next_figure_position();
 
-
-		static void cb_show_menu(Address, Address);
 		static void cb_place_hexagon(Address, Address);
 		static void cb_next_figure_position(Address, Address);
 	};
