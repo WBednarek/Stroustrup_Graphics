@@ -3,8 +3,6 @@
 #include "../Graph.h"
 
 
-
-
 namespace H16
 {
 	struct Button_coord : Button // button that stores its data

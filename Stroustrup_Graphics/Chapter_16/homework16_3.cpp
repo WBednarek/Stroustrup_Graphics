@@ -25,6 +25,8 @@ namespace H16_3
 
 	My_window::My_window(Point xy, int w, int h, const string& title) :
 		Window(xy, w, h, title),
+		window_width(w),
+		window_height(h),
 		button(Point(200, 200), 100, 100, "Dalej", cb_next_position, 1),
 		im(Point(200, 200), "fallout.gif"), // fallout.git is 100x100 image
 		button_pushed(false),

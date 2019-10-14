@@ -30,8 +30,10 @@ namespace H16_3
 	public:
 		My_window(Point xy, int w, int h, const string& title);
 	private:
-		const int MAX_WIDTH = 500;
-		const int MAX_HEIGHT = 300;
+		int window_width;
+		int window_height;
+		const int MAX_WIDTH = window_width-100;
+		const int MAX_HEIGHT = window_height-100;
 		int display_menu_height;
 		Button_coord button;
 		Image im;

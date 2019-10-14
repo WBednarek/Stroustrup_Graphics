@@ -159,9 +159,6 @@ namespace H16_4
 		figures_menu_button.show();
 	}
 
-
-
-
 	void My_window::show_menu()
 	{
 		figures_menu_button.hide();
