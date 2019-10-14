@@ -5,6 +5,23 @@
 
 namespace H16_4
 {
+	class Triangle : public Polygon
+	{
+	public:
+		Triangle(Point a, Point b, Point c);
+		void draw_lines() const;
+	private:
+		Polygon triangle;
+	};
+
+	class Hexagon : public Polygon
+	{
+	public:
+		Hexagon::Hexagon(Point start, int edge_length);
+		void draw_lines() const;
+	private:
+		Polygon hexagon;
+	};
 
 	class My_window : Window
 	{
@@ -14,24 +31,34 @@ namespace H16_4
 		int display_menu_height;
 		const int button_height = 30;
 		const int radius = 30;
-		int circle_counter;
+		const int edge_length = 40;
 		bool button_pushed;
 		Menu figures_menu;
 		Button figures_menu_button;
 		In_box x_coordinate_input;
 		In_box y_coordinate_input;
-		Out_box coordinates_display;
+		Out_box message_box;
 		Vector_ref<Circle> circles;
+		Vector_ref<Rectangle> squares;
+		Vector_ref<Triangle> equilateral_triangles;
+		Vector_ref<Hexagon> hexagons;
 
 		int get_x_coordinate();
-		int get_y_cooordinate();
+		int get_y_coordinate();
 		
-		void place_circle();
-		void add_counter(int& counter);
-		void show_menu();
 		void display_point(int x, int y);
-		static void cb_place_circle(Address, Address);
+		void show_menu();
+		void place_circle();
+		void place_square();
+		void place_equilateral_triangle();
+		void place_hexagon();
+
+
 		static void cb_show_menu(Address, Address);
+		static void cb_place_circle(Address, Address);
+		static void cb_place_square(Address, Address);
+		static void cb_place_equilateral_triangle(Address, Address);
+		static void cb_place_hexagon(Address, Address);
 	};
 
 

@@ -11,8 +11,8 @@
 //#include "Chapter_15\exercises_15.h"
 //#include "Chapter_15\homework_15.h"
 //#include "Chapter_16\exercises_16.h"
-#include "Chapter_16/My_window.h"
-#include"Chapter_16/homework16_3.h"
+//#include "Chapter_16/My_window.h"
+//#include"Chapter_16/homework16_3.h"
 #include"Chapter_16/homework16_4.h"
 
 int main()

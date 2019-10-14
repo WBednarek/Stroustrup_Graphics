@@ -20,7 +20,7 @@ void Button::attach(Window& win)
     own = &win;
 }
 
-//------------------------------------------------------------------------------
+
 
 int In_box::get_int()
 {
@@ -30,6 +30,15 @@ int In_box::get_int()
     if (!isdigit(p[0])) return -999999;
     return atoi(p);
 }
+
+//------------------------------------------------------------------------------
+
+string In_box::get_string()
+{
+	Fl_Input& pi = reference_to<Fl_Input>(pw);
+	return string(pi.value());
+}
+
 
 //------------------------------------------------------------------------------
 
